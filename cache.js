@@ -12,7 +12,7 @@ exports.main_handler = async (event, context, callback) => {
     if(!!cache) {
         callback(null,cache.data);//不管是否超时先返回上次的数据
     }else{
-        callback(null,"没有读到缓存数据");//不管是否超时先返回上次的数据
+        console.log("没有读到缓存数据");
     }
     if(!cache || cache.timeout){//缓存已超时
         await saveCache(cachePath,Math.random().toString());//生成新数据并更新缓存
